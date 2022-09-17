@@ -14,10 +14,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setupUI()
+    }
 
+    private fun setupUI() {
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
-
         setSupportActionBar(bind.toolbar)
 
         val navController = findNavController(R.id.nav_host_fragment_content_main)
