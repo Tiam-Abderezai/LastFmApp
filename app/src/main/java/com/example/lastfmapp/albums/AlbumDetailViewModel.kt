@@ -8,10 +8,10 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AlbumsViewModel(val app: Application) : AndroidViewModel(app) {
+class AlbumDetailViewModel(val app: Application) : AndroidViewModel(app) {
 
-    private val _albumsLiveData = MutableLiveData<List<Album>>()
-    val albumsLiveData: LiveData<List<Album>> = _albumsLiveData
+    private val _albumDetailLiveData = MutableLiveData<List<Album>>()
+    val albumDetailLiveData: LiveData<List<Album>> = _albumDetailLiveData
 
     init {
         init()
@@ -19,7 +19,7 @@ class AlbumsViewModel(val app: Application) : AndroidViewModel(app) {
 
     private fun init() {
         viewModelScope.launch(Dispatchers.IO) {
-            _albumsLiveData.postValue(listOf(Album("Album 1"), Album("Album2"), Album("Album3")))
+            _albumDetailLiveData.postValue(listOf(Album("Album 1"), Album("Album2"), Album("Album3")))
         }
     }
 }

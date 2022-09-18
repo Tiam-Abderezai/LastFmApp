@@ -5,14 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.lastfmapp.albums.AlbumsFragment
-import com.example.lastfmapp.albums.ArtistsFragment
+import com.example.lastfmapp.albums.AlbumListFragment
+import com.example.lastfmapp.albums.ArtistListFragment
 import com.example.lastfmapp.databinding.ActivityMainBinding
 import com.example.lastfmapp.util.MainPagerAdapter
 
 class MainActivity : AppCompatActivity() {
 
-    private val fragments = listOf(AlbumsFragment(), ArtistsFragment())
+    private val fragments = listOf(AlbumListFragment(), ArtistListFragment())
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var bind: ActivityMainBinding
     private val mainPageAdapter by lazy {

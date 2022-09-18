@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/nav_dest_albums_frag"
-        android:name="com.example.lastfmapp.albums.AlbumsFragment"
-        tools:layout="@layout/fragment_albums">
+        android:name="com.example.lastfmapp.albums.AlbumListFragment"
+        tools:layout="@layout/fragment_album_list">
 
 <!--        <action-->
 <!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
