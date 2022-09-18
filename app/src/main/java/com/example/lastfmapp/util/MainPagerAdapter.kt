@@ -5,16 +5,16 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.lastfmapp.albums.AlbumsFragment
 import com.example.lastfmapp.albums.ArtistsFragment
 
-class MainPagerAdapter(activity: FragmentActivity, val colorList: List<Int>) :
+class MainPagerAdapter(activity: FragmentActivity, val fragments: List<Fragment>) :
     FragmentStateAdapter(activity) {
-    override fun getItemCount() = colorList.count()
+    override fun getItemCount() = fragments.count()
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> AlbumsFragment()
             1 -> ArtistsFragment()
             else -> {
-                TODO()
+                AlbumsFragment()
             }
         }
     }
