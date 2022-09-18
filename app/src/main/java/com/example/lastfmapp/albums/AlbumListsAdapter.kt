@@ -5,18 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lastfmapp.databinding.ItemAlbumBinding
 
-class AlbumsAdapter(
+class AlbumListsAdapter(
     private val albums: List<Album>
-) : RecyclerView.Adapter<AlbumsAdapter.AlbumsViewHolder>() {
+) : RecyclerView.Adapter<AlbumListsAdapter.AlbumListViewHolder>() {
 
-    class AlbumsViewHolder(private val itemBind: ItemAlbumBinding) : RecyclerView.ViewHolder(itemBind.root) {
+    class AlbumListViewHolder(private val itemBind: ItemAlbumBinding) : RecyclerView.ViewHolder(itemBind.root) {
         fun bind(album: Album) {
             itemBind.tvTitle.text = album.name
         }
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumListViewHolder {
         val bind = ItemAlbumBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return AlbumsViewHolder(
+        return AlbumListViewHolder(
             bind
         )
     }
@@ -25,7 +25,7 @@ class AlbumsAdapter(
         return albums.size
     }
 
-    override fun onBindViewHolder(holder: AlbumsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AlbumListViewHolder, position: Int) {
         val item = albums[position]
         holder.bind(item)
     }

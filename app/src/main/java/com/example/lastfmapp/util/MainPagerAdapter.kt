@@ -2,8 +2,8 @@ package com.example.lastfmapp.util
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.lastfmapp.albums.AlbumsFragment
-import com.example.lastfmapp.albums.ArtistsFragment
+import com.example.lastfmapp.albums.AlbumListFragment
+import com.example.lastfmapp.albums.ArtistListFragment
 
 class MainPagerAdapter(activity: FragmentActivity, val fragments: List<Fragment>) :
     FragmentStateAdapter(activity) {
@@ -11,10 +11,10 @@ class MainPagerAdapter(activity: FragmentActivity, val fragments: List<Fragment>
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> AlbumsFragment()
-            1 -> ArtistsFragment()
+            0 -> AlbumListFragment()
+            1 -> ArtistListFragment()
             else -> {
-                AlbumsFragment()
+                AlbumListFragment()
             }
         }
     }

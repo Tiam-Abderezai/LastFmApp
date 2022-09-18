@@ -6,39 +6,38 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lastfmapp.databinding.FragmentAlbumsBinding
+import com.example.lastfmapp.databinding.FragmentAlbumDetailBinding
 
-class AlbumsFragment : Fragment() {
+class AlbumDetailFragment : Fragment() {
 
-    private lateinit var _bind: FragmentAlbumsBinding
+    private lateinit var _bind: FragmentAlbumDetailBinding
     private val bind get() = _bind
-    private val albumsViewModel by lazy { ViewModelProvider(this).get(AlbumsViewModel::class.java) }
+    private val albumDetailViewModel by lazy { ViewModelProvider(this).get(AlbumDetailViewModel::class.java) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _bind = FragmentAlbumsBinding.inflate(inflater, container, false)
+        _bind = FragmentAlbumDetailBinding.inflate(inflater, container, false)
 
         return bind.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bind.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+//        bind.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         setupRecyclerView()
         setupLifeCycleObservers()
     }
 
     private fun setupRecyclerView() {
-        bind.recyclerView.adapter = AlbumsAdapter(listOf(Album("one"), Album("two"), Album("three")))
+//        bind.recyclerView.adapter = AlbumListsAdapter(listOf(Album("one"), Album("two"), Album("three")))
     }
 
     private fun setupLifeCycleObservers() {
-        with(albumsViewModel) {
-            albumsLiveData.observe(viewLifecycleOwner) {
+        with(albumDetailViewModel) {
+            albumDetailLiveData.observe(viewLifecycleOwner) {
             }
         }
     }

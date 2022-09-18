@@ -5,18 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lastfmapp.databinding.ItemArtistBinding
 
-class ArtistsAdapter(
+class ArtistListAdapter(
     private val artists: List<Artist>
-) : RecyclerView.Adapter<ArtistsAdapter.ArtistsViewHolder>() {
+) : RecyclerView.Adapter<ArtistListAdapter.ArtistListViewHolder>() {
 
-    class ArtistsViewHolder(private val itemBind: ItemArtistBinding) : RecyclerView.ViewHolder(itemBind.root) {
+    class ArtistListViewHolder(private val itemBind: ItemArtistBinding) : RecyclerView.ViewHolder(itemBind.root) {
         fun bind(artist: Artist) {
             itemBind.tvTitle.text = artist.name
         }
     }
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistsViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArtistListViewHolder {
         val bind = ItemArtistBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ArtistsViewHolder(
+        return ArtistListViewHolder(
             bind
         )
     }
@@ -25,7 +25,7 @@ class ArtistsAdapter(
         return artists.size
     }
 
-    override fun onBindViewHolder(holder: ArtistsViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ArtistListViewHolder, position: Int) {
         val item = artists[position]
         holder.bind(item)
     }

@@ -1,4 +1,4 @@
-package com.example.lastfmapp.artists
+package com.example.lastfmapp.albums
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,10 +8,10 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ArtistsViewModel(val app: Application) : AndroidViewModel(app) {
+class AlbumListViewModel(val app: Application) : AndroidViewModel(app) {
 
-    private val _artistsLiveData = MutableLiveData<List<Artist>>()
-    val artistsLiveData: LiveData<List<Artist>> = _artistsLiveData
+    private val _albumListLiveData = MutableLiveData<List<Album>>()
+    val albumListLiveData: LiveData<List<Album>> = _albumListLiveData
 
     init {
         init()
@@ -19,7 +19,7 @@ class ArtistsViewModel(val app: Application) : AndroidViewModel(app) {
 
     private fun init() {
         viewModelScope.launch(Dispatchers.IO) {
-            _artistsLiveData.postValue(listOf(Artist("Artist 1"), Artist("Artist 2"), Artist("Artist 3")))
+            _albumListLiveData.postValue(listOf(Album("Album 1"), Album("Album2"), Album("Album3")))
         }
     }
 }

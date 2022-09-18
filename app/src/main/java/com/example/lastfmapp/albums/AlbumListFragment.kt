@@ -7,23 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lastfmapp.artists.Artist
-import com.example.lastfmapp.artists.ArtistsAdapter
-import com.example.lastfmapp.artists.ArtistsViewModel
-import com.example.lastfmapp.databinding.FragmentArtistsBinding
+import com.example.lastfmapp.databinding.FragmentAlbumListBinding
 
-class ArtistsFragment : Fragment() {
+class AlbumListFragment : Fragment() {
 
-    private lateinit var _bind: FragmentArtistsBinding
+    private lateinit var _bind: FragmentAlbumListBinding
     private val bind get() = _bind
-    private val artistsViewModel by lazy { ViewModelProvider(this).get(ArtistsViewModel::class.java) }
+    private val albumListViewModel by lazy { ViewModelProvider(this).get(AlbumListViewModel::class.java) }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _bind = FragmentArtistsBinding.inflate(inflater, container, false)
+        _bind = FragmentAlbumListBinding.inflate(inflater, container, false)
 
         return bind.root
     }
@@ -36,12 +33,12 @@ class ArtistsFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        bind.recyclerView.adapter = ArtistsAdapter(listOf(Artist("artist one"), Artist("artist two"), Artist("artist three")))
+        bind.recyclerView.adapter = AlbumListsAdapter(listOf(Album("one"), Album("two"), Album("three")))
     }
 
     private fun setupLifeCycleObservers() {
-        with(artistsViewModel) {
-            artistsLiveData.observe(viewLifecycleOwner) {
+        with(albumListViewModel) {
+            albumListLiveData.observe(viewLifecycleOwner) {
             }
         }
     }
