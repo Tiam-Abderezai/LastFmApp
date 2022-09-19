@@ -19,6 +19,15 @@ android {
     }
 
     buildTypes {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+        debug {
+            buildConfigField("String", "API_KEY", "${properties.getProperty('API_KEY')}")
+            buildConfigField("String", "API_TOKEN", "${properties.getProperty('API_TOKEN')}")
+            buildConfigField("String", "BASE_URL", "${properties.getProperty('BASE_URL')}")
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -34,6 +43,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
 
 dependencies {
