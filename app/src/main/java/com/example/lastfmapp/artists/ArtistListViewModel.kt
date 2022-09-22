@@ -5,10 +5,13 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ArtistListViewModel(val app: Application) : AndroidViewModel(app) {
+@HiltViewModel
+class ArtistListViewModel @Inject constructor(val app: Application) : AndroidViewModel(app) {
 
     private val _artistListLiveData = MutableLiveData<List<Artist>>()
     val artistListLiveData: LiveData<List<Artist>> = _artistListLiveData
@@ -19,7 +22,13 @@ class ArtistListViewModel(val app: Application) : AndroidViewModel(app) {
 
     private fun init() {
         viewModelScope.launch(Dispatchers.IO) {
-            _artistListLiveData.postValue(listOf(Artist("Artist 1"), Artist("Artist 2"), Artist("Artist 3")))
+            _artistListLiveData.postValue(
+                listOf(
+                    Artist("Artist 1"),
+                    Artist("Artist 2"),
+                    Artist("Artist 3")
+                )
+            )
         }
     }
 }

@@ -1,4 +1,5 @@
-package com.example.lastfmapp.util
+package com.example.lastfmapp.main
+
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter

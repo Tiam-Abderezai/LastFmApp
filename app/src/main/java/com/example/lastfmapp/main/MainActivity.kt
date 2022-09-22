@@ -1,15 +1,17 @@
-package com.example.lastfmapp
+package com.example.lastfmapp.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.lastfmapp.R
 import com.example.lastfmapp.albums.AlbumListFragment
 import com.example.lastfmapp.albums.ArtistListFragment
 import com.example.lastfmapp.databinding.ActivityMainBinding
-import com.example.lastfmapp.util.MainPagerAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val fragments = listOf(AlbumListFragment(), ArtistListFragment())
@@ -18,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private val mainPageAdapter by lazy {
         MainPagerAdapter(this, fragments)
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setupUI()
@@ -28,8 +31,10 @@ class MainActivity : AppCompatActivity() {
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
         setSupportActionBar(bind.toolbar)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
+        val navController = navHostFragment.navController
+//        val navController = findNavController(R.id.nav_host_fragment_content_main)
         appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
@@ -38,4 +43,3 @@ class MainActivity : AppCompatActivity() {
         bind.viewPager.adapter = mainPageAdapter
     }
 }
-
