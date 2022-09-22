@@ -1,4 +1,4 @@
-package com.example.lastfmapp.remote
+package com.example.lastfmapp.api
 
 import com.example.lastfmapp.util.Constants.Companion.API_KEY
 import javax.inject.Inject

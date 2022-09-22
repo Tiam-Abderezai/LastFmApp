@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lastfmapp.databinding.FragmentAlbumListBinding
-import com.example.lastfmapp.remote.Status
+import com.example.lastfmapp.api.Status
 import com.example.lastfmapp.util.Log
 import com.example.lastfmapp.util.Log.TAG
 import dagger.hilt.android.AndroidEntryPoint

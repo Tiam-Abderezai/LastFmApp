@@ -6,8 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.example.lastfmapp.remote.ApiRepository
-import com.example.lastfmapp.remote.ApiResource
+import com.example.lastfmapp.api.ApiRepository
+import com.example.lastfmapp.api.ApiResource
 import com.example.lastfmapp.util.Log
 import com.example.lastfmapp.util.Log.TAG
 import dagger.hilt.android.lifecycle.HiltViewModel

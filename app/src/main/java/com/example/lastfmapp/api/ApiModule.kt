@@ -1,4 +1,4 @@
-package com.example.lastfmapp.remote
+package com.example.lastfmapp.api
 
 import com.example.lastfmapp.util.Constants.Companion.BASE_URL
 import dagger.Binds

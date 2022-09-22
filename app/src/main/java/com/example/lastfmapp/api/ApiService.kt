@@ -1,4 +1,4 @@
-package com.example.lastfmapp.remote
+package com.example.lastfmapp.api
 
 import retrofit2.Call
 import retrofit2.http.GET

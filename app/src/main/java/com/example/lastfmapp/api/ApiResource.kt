@@ -1,4 +1,4 @@
-package com.example.lastfmapp.remote
+package com.example.lastfmapp.api
 
 data class ApiResource<out T>(val status: Status, val data: T?, val message: String?) {
     companion object {
