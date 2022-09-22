@@ -1,34 +1,45 @@
 package com.example.lastfmapp.albums
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.example.lastfmapp.remote.ApiClient
+import com.example.lastfmapp.remote.ApiRepository
+import com.example.lastfmapp.remote.ApiResource
+import com.example.lastfmapp.util.Log
+import com.example.lastfmapp.util.Log.TAG
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.awaitResponse
+import javax.inject.Inject
 
-class AlbumListViewModel(val app: Application) : AndroidViewModel(app) {
+@HiltViewModel
+class AlbumListViewModel @Inject constructor(val app: Application, private val apiRepository: ApiRepository) : ViewModel() {
 
     private val _albumListLiveData = MutableLiveData<List<Album>>()
     val albumListLiveData: LiveData<List<Album>> = _albumListLiveData
 
     init {
-        init()
+        Log.d(TAG, "")
     }
 
-    private fun init() {
+    fun getAlbumInfo() = liveData(Dispatchers.IO) {
         viewModelScope.launch(Dispatchers.IO) {
-            val albumInfo = getAlbumInfo("Cher", "Believe")
-            val searchArtist = searchArtist("Cher", "Believe")
-            println("shit searchArtist: ${searchArtist.awaitResponse().raw()}")
-            println("shit albumInfo: ${albumInfo.awaitResponse().raw()}")
-            _albumListLiveData.postValue(listOf(Album("Album 1"), Album("Album2"), Album("Album3")))
+            emit(ApiResource.loading(data = null))
+            try {
+                emit(ApiResource.success(data = apiRepository.getAlbumInfo()))
+                _albumListLiveData.postValue(listOf(Album("Album 1"), Album("Album2"), Album("Album3")))
+            } catch (exception: Exception) {
+                exception.message?.let { Log.d(Log.TAG, it) }
+                emit(
+                    ApiResource.error(
+                        data = null,
+                        message = exception.message ?: "Error Occurred!"
+                    )
+                )
+            }
         }
     }
-
-    private suspend fun getAlbumInfo(artist: String, album: String) = ApiClient.getAlbumInfo(artist, album)
-    private suspend fun searchArtist(artist: String, album: String) = ApiClient.searchArtist(artist, album)
 }

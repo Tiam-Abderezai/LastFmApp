@@ -14,15 +14,11 @@ interface ApiService {
 
     @GET("?method=album.getInfo&format=json")
     fun getAlbumInfo(
-        @Query("artist") artist: String?,
-        @Query("album") album: String?,
         @Query("api_key") apiKey: String
     ): Call<ApiResponse>
 
     @GET("?method=artist.search&artist=cher&format=json")
     fun searchArtist(
-        @Query("artist") artist: String?,
-        @Query("album") album: String?,
         @Query("api_key") apiKey: String
     ): Call<ApiResponse>
 

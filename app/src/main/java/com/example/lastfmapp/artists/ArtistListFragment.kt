@@ -11,7 +11,9 @@ import com.example.lastfmapp.artists.Artist
 import com.example.lastfmapp.artists.ArtistListAdapter
 import com.example.lastfmapp.artists.ArtistListViewModel
 import com.example.lastfmapp.databinding.FragmentArtistListBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArtistListFragment : Fragment() {
 
     private lateinit var _bind: FragmentArtistListBinding
@@ -36,7 +38,13 @@ class ArtistListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        bind.recyclerView.adapter = ArtistListAdapter(listOf(Artist("artist one"), Artist("artist two"), Artist("artist three")))
+        bind.recyclerView.adapter = ArtistListAdapter(
+            listOf(
+                Artist("artist one"),
+                Artist("artist two"),
+                Artist("artist three")
+            )
+        )
     }
 
     private fun setupLifeCycleObservers() {

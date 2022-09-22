@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.lastfmapp.databinding.FragmentAlbumDetailBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlbumDetailFragment : Fragment() {
 
     private lateinit var _bind: FragmentAlbumDetailBinding
