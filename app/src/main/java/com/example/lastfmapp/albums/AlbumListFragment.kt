@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lastfmapp.databinding.FragmentAlbumListBinding
-import com.example.lastfmapp.api.Status
+import com.example.lastfmapp.util.Status
 import com.example.lastfmapp.util.Log
 import com.example.lastfmapp.util.Log.TAG
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,28 +38,28 @@ class AlbumListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        bind.recyclerView.adapter =
-            AlbumListsAdapter(listOf(Album("one"), Album("two"), Album("three")))
+//        bind.recyclerView.adapter =
+//            AlbumListsAdapter(listOf(Album("one"), Album("two"), Album("three")))
     }
 
-    fun setupLifeCycleObservers() {
+    private fun setupLifeCycleObservers() {
         with(albumListViewModel) {
-            getAlbumInfo().observe(viewLifecycleOwner) {
-                it?.let { resource ->
+            getTopAlbums().observe(viewLifecycleOwner) { topAlbums ->
+                topAlbums?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
                             bind.albumListProgressBar.visibility = View.GONE
-                            Log.d(TAG, "")
+                            Log.d(TAG, "SUCCESS ${resource.data}")
 //                             resource.data?.let { movieResponse -> updateUpComingMoviesList(movieResponse = movieResponse) }
                         }
                         Status.ERROR -> {
                             bind.albumListProgressBar.visibility = View.GONE
-                            Log.d(TAG, "")
-                            Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
+                            Log.d(TAG, "ERROR")
+                            Toast.makeText(requireContext(), topAlbums.message, Toast.LENGTH_LONG).show()
                         }
                         Status.LOADING -> {
                             bind.albumListProgressBar.visibility = View.VISIBLE
-                            Log.d(TAG, "")
+                            Log.d(TAG, "LOADING")
                         }
                     }
                 }

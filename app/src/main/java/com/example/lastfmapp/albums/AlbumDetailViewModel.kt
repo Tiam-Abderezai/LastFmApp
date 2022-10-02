@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.lastfmapp.albums.model.Album
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -19,7 +20,7 @@ class AlbumDetailViewModel(val app: Application) : AndroidViewModel(app) {
 
     private fun init() {
         viewModelScope.launch(Dispatchers.IO) {
-            _albumDetailLiveData.postValue(listOf(Album("Album 1"), Album("Album2"), Album("Album3")))
+//            _albumDetailLiveData.postValue(listOf(Album("Album 1"), Album("Album2"), Album("Album3")))
         }
     }
 }
