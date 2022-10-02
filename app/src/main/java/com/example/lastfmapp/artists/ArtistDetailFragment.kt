@@ -35,13 +35,13 @@ class ArtistDetailFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        bind.recyclerView.adapter = ArtistDetailAdapter(
-            listOf(
-                Artist("artist one"),
-                Artist("artist two"),
-                Artist("artist three")
-            )
-        )
+//        bind.recyclerView.adapter = ArtistDetailAdapter(
+// //            listOf(
+// //                Artist("artist one"),
+// //                Artist("artist two"),
+// //                Artist("artist three")
+// //            )
+//        )
     }
 
     private fun setupLifeCycleObservers() {

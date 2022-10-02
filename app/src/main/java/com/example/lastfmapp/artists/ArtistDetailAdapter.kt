@@ -3,6 +3,7 @@ package com.example.lastfmapp.artists
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lastfmapp.albums.model.Artist
 import com.example.lastfmapp.databinding.ItemArtistBinding
 
 class ArtistDetailAdapter(

@@ -1,4 +1,4 @@
-package com.example.lastfmapp.api
+package com.example.lastfmapp.retrofit
 
 import com.example.lastfmapp.util.Constants.Companion.BASE_URL
 import dagger.Binds
@@ -13,10 +13,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
 @InstallIn(SingletonComponent::class)
-interface ApiModule {
-
+interface RetrofitModule {
+    @Suppress("unused")
     @Binds
-    fun bindApiRepositories(apiRepoImpl: ApiRepositoryImpl): ApiRepository
+    fun bindApiRepositories(apiRepoImpl: RetrofitRepositoryImpl): RetrofitRepository
 
     companion object {
 
@@ -37,6 +37,6 @@ interface ApiModule {
             .build()
 
         @Provides
-        fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+        fun provideApiService(retrofit: Retrofit): RetrofitService = retrofit.create(RetrofitService::class.java)
     }
 }

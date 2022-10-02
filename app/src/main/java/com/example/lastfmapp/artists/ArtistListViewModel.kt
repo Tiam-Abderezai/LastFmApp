@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.lastfmapp.albums.model.Artist
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -22,13 +23,13 @@ class ArtistListViewModel @Inject constructor(val app: Application) : AndroidVie
 
     private fun init() {
         viewModelScope.launch(Dispatchers.IO) {
-            _artistListLiveData.postValue(
-                listOf(
-                    Artist("Artist 1"),
-                    Artist("Artist 2"),
-                    Artist("Artist 3")
-                )
-            )
+//            _artistListLiveData.postValue(
+//                listOf(
+//                    Artist("Artist 1"),
+//                    Artist("Artist 2"),
+//                    Artist("Artist 3")
+//                )
+//            )
         }
     }
 }
