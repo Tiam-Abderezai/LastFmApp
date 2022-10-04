@@ -1,4 +1,4 @@
-package com.example.lastfmapp.app
+package com.example.lastfmapp
 
 import androidx.multidex.MultiDexApplication
 import dagger.hilt.android.HiltAndroidApp
