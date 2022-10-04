@@ -1,8 +1,7 @@
-package com.example.lastfmapp.retrofit
+package com.example.lastfmapp.data
 
-import com.example.lastfmapp.albums.model.Album
-import com.example.lastfmapp.albums.model.Artist
-import com.example.lastfmapp.albums.model.Image
+import com.example.lastfmapp.data.remote.RetrofitService
+import com.example.lastfmapp.model.album
 import com.example.lastfmapp.util.Constants
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
@@ -25,35 +24,6 @@ import java.util.concurrent.TimeUnit
 @ExperimentalSerializationApi
 class RetrofitRepositoryImplTest {
     private val mockWebServer = MockWebServer()
-    val artist = Artist(
-        mbid = "bfcc6d75-a6a5-4bc6-8282-47aec8531818",
-        name = "Cher",
-        url = "https://www.last.fm/music/Cher"
-    )
-    val imageSmall = Image(
-        text = null,
-        size = "small"
-    )
-    val imageMedium = Image(
-        text = null,
-        size = "medium"
-    )
-    val imageLarge = Image(
-        text = null,
-        size = "large"
-    )
-    val imageExtraLarge = Image(
-        text = null,
-        size = "extralarge"
-    )
-
-    val album = Album(
-        artist = artist,
-        listOf(imageSmall, imageMedium, imageLarge, imageExtraLarge),
-        mbid = "63b3a8ca-26f2-4e2b-b867-647a6ec2bebd",
-        name = "Believe",
-        url = "https://www.last.fm/music/Cher/Believe"
-    )
 
     private val client = OkHttpClient.Builder()
         .connectTimeout(1, TimeUnit.SECONDS)

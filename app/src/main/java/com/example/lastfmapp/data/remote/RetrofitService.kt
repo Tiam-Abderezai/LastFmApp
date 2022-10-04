@@ -1,4 +1,4 @@
-package com.example.lastfmapp.retrofit
+package com.example.lastfmapp.data.remote
 
 import com.example.lastfmapp.albums.model.TopAlbumResponse
 import retrofit2.Response
