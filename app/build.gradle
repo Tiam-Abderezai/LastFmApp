@@ -4,6 +4,7 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -27,7 +28,7 @@ android {
 
         debug {
             buildConfigField("String", "API_KEY", "${properties.getProperty('API_KEY')}")
-            buildConfigField("String", "API_TOKEN", "${properties.getProperty('API_TOKEN')}")
+            buildConfigField("String", "API_SECRET", "${properties.getProperty('API_SECRET')}")
             buildConfigField("String", "BASE_URL", "${properties.getProperty('BASE_URL')}")
         }
 
@@ -46,7 +47,24 @@ android {
     buildFeatures {
         viewBinding true
     }
-
+    kapt {
+        correctErrorTypes true
+    }
+    hilt {
+        enableAggregatingTask = true
+    }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    sourceSets {
+        test {
+            resources {
+                srcDirs 'src\\test\\resources'
+            }
+        }
+    }
 }
 
 dependencies {
@@ -55,40 +73,61 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'androidx.multidex:multidex:2.0.1'
 
+    // Local & Instrumented Unit Tests
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'androidx.test:core:1.4.0'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    testImplementation 'org.robolectric:robolectric:4.8.2'
+    testImplementation "com.google.truth:truth:1.1.3"
 
-    //    LifeCycle
+    androidTestImplementation 'androidx.arch.core:core-testing:2.1.0'
+    androidTestImplementation "com.google.truth:truth:1.1.3"
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // LifeCycle
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation 'androidx.lifecycle:lifecycle-common:2.5.1'
+    implementation "androidx.lifecycle:lifecycle-runtime:2.5.1"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
     // Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
 
-    // Retrofit
+    // Network
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.1'
+    testImplementation "com.squareup.okhttp3:mockwebserver:4.10.0"
 
     // KotlinX
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1'
     kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.4.2"
 
     // Kotlin Coroutines
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.2'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutines"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutines"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version_coroutines"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version_coroutines"
 
     // Dagger Hilt
-    implementation 'com.google.dagger:hilt-android:2.41'
-    kapt 'com.google.dagger:hilt-compiler:2.41'
+    implementation "com.google.dagger:hilt-android:$version_dagger_hilt"
+    kapt "com.google.dagger:hilt-compiler:$version_dagger_hilt"
+    androidTestImplementation  "com.google.dagger:hilt-android-testing:$version_dagger_hilt"
+    androidTestAnnotationProcessor "com.google.dagger:hilt-compiler:$version_dagger_hilt"
+    testImplementation "com.google.dagger:hilt-android-testing:$version_dagger_hilt"
+
+    // Room Database
+    implementation "androidx.room:room-ktx:$version_room"
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+    implementation "androidx.room:room-ktx:$version_room"
+    androidTestImplementation "androidx.room:room-testing:$version_room"
 
 }

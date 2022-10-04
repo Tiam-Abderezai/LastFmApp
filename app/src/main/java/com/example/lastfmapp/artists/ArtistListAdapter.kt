@@ -3,14 +3,15 @@ package com.example.lastfmapp.artists
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.lastfmapp.artists.model.ArtistRequest
 import com.example.lastfmapp.databinding.ItemArtistBinding
 
 class ArtistListAdapter(
-    private val artists: List<Artist>
+    private val artists: List<ArtistRequest>
 ) : RecyclerView.Adapter<ArtistListAdapter.ArtistListViewHolder>() {
 
     class ArtistListViewHolder(private val itemBind: ItemArtistBinding) : RecyclerView.ViewHolder(itemBind.root) {
-        fun bind(artist: Artist) {
+        fun bind(artist: ArtistRequest) {
             itemBind.tvTitle.text = artist.name
         }
     }

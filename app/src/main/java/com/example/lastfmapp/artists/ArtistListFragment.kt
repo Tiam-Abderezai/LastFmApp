@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.lastfmapp.artists.Artist
-import com.example.lastfmapp.artists.ArtistListAdapter
 import com.example.lastfmapp.artists.ArtistListViewModel
 import com.example.lastfmapp.databinding.FragmentArtistListBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,13 +36,13 @@ class ArtistListFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        bind.recyclerView.adapter = ArtistListAdapter(
-            listOf(
-                Artist("artist one"),
-                Artist("artist two"),
-                Artist("artist three")
-            )
-        )
+//        bind.recyclerView.adapter = ArtistListAdapter(
+//            listOf(
+//                Artist("artist one"),
+//                Artist("artist two"),
+//                Artist("artist three")
+//            )
+//        )
     }
 
     private fun setupLifeCycleObservers() {
