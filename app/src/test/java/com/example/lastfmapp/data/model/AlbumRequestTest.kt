@@ -1,4 +1,4 @@
-package com.example.lastfmapp.model
+package com.example.lastfmapp.data.model
 
 import com.example.lastfmapp.albums.model.AlbumRequest
 import com.example.lastfmapp.albums.model.ImageRequest

@@ -1,7 +1,8 @@
-package com.example.lastfmapp.data
+package com.example.lastfmapp.data.repositories
 
+import com.example.lastfmapp.data.RetrofitRepositoryImpl
+import com.example.lastfmapp.data.model.album
 import com.example.lastfmapp.data.remote.RetrofitService
-import com.example.lastfmapp.model.album
 import com.example.lastfmapp.util.Constants
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
