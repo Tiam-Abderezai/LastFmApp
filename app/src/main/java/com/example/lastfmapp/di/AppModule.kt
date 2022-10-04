@@ -6,6 +6,8 @@ import com.example.lastfmapp.data.RetrofitRepository
 import com.example.lastfmapp.data.RetrofitRepositoryImpl
 import com.example.lastfmapp.data.local.AlbumDao
 import com.example.lastfmapp.data.local.RoomDB
+import com.example.lastfmapp.data.local.RoomRepository
+import com.example.lastfmapp.data.local.RoomRepositoryImpl
 import com.example.lastfmapp.data.remote.RetrofitService
 import com.example.lastfmapp.util.Constants
 import com.example.lastfmapp.util.Constants.Companion.BASE_URL
@@ -38,6 +40,12 @@ object AppModule {
     fun provideAlbumDao(
         database: RoomDB
     ) = database.albumDao()
+
+    @Singleton
+    @Provides
+    fun provideRoomRepository(
+        albumDao: AlbumDao
+    ) = RoomRepositoryImpl(albumDao) as RoomRepository
 
     @Singleton
     @Provides

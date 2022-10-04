@@ -1,4 +1,4 @@
-package com.example.lastfmapp.data
+package com.example.lastfmapp.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

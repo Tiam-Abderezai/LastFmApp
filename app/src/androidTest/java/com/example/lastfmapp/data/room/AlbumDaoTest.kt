@@ -7,9 +7,9 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.example.lastfmapp.data.local.AlbumDao
 import com.example.lastfmapp.data.local.RoomDB
-import com.example.lastfmapp.model.albumEntity1
-import com.example.lastfmapp.model.albumEntity2
-import com.example.lastfmapp.model.albumEntity3
+import com.example.lastfmapp.data.model.albumEntity1
+import com.example.lastfmapp.data.model.albumEntity2
+import com.example.lastfmapp.data.model.albumEntity3
 import com.example.lastfmapp.util.getOrAwaitValue
 import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.ExperimentalCoroutinesApi

@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lastfmapp.databinding.FragmentAlbumListBinding
-import com.example.lastfmapp.util.Status
 import com.example.lastfmapp.util.Log
 import com.example.lastfmapp.util.Log.TAG
+import com.example.lastfmapp.util.Status
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,7 +44,7 @@ class AlbumListFragment : Fragment() {
 
     private fun setupLifeCycleObservers() {
         with(albumListViewModel) {
-            getTopAlbums().observe(viewLifecycleOwner) { topAlbums ->
+            getAlbums().observe(viewLifecycleOwner) { topAlbums ->
                 topAlbums?.let { resource ->
                     when (resource.status) {
                         Status.SUCCESS -> {
