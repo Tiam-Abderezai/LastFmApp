@@ -29,23 +29,23 @@ class AlbumListViewModel @Inject constructor(
         Log.d(TAG, "")
     }
 
-    fun getAlbums() = liveData(Dispatchers.IO) {
-        val topAlbums = roomRepo.getAlbums()
-        emit(Resource.loading(data = null))
-        try {
-            emit(Resource.success(data = topAlbums))
-            val albums = topAlbums.value
-//            _albumStatusLiveData.postValue(Event(Resource.success(albums[0])))
-        } catch (exception: Exception) {
-            exception.message?.let { Log.d(TAG, it) }
-            emit(
-                Resource.error(
-                    data = null,
-                    message = exception.message ?: "Error Occurred!"
-                )
-            )
-        }
-    }
+//    fun getAlbums() = liveData(Dispatchers.IO) {
+//        val topAlbums = roomRepo.getAlbums()
+//        emit(Resource.loading(data = null))
+//        try {
+//            emit(Resource.success(data = topAlbums))
+//            val albums = topAlbums.value
+// //            _albumStatusLiveData.postValue(Event(Resource.success(albums[0])))
+//        } catch (exception: Exception) {
+//            exception.message?.let { Log.d(TAG, it) }
+//            emit(
+//                Resource.error(
+//                    data = null,
+//                    message = exception.message ?: "Error Occurred!"
+//                )
+//            )
+//        }
+//    }
 
     fun saveAlbum(album: AlbumEntity) = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))

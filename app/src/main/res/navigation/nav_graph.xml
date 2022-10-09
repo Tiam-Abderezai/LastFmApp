@@ -10,18 +10,18 @@
         android:name="com.example.lastfmapp.albums.AlbumListFragment"
         tools:layout="@layout/fragment_album_list">
 
-<!--        <action-->
-<!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
-<!--            app:destination="@id/SecondFragment" />-->
+        <action
+            android:id="@+id/to_ArtistListFragment"
+            app:destination="@id/nav_dest_artists_frag" />
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/SecondFragment"-->
-<!--        android:name="com.example.lastfmapp.artists.ArtistsFragment"-->
-<!--        android:label="@string/second_fragment_label"-->
-<!--        tools:layout="@layout/fragment_second">-->
+    <fragment
+        android:id="@+id/nav_dest_artists_frag"
+        android:name="com.example.lastfmapp.albums.ArtistListFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_artist_list">
 
-<!--        <action-->
-<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-<!--            app:destination="@id/nav_dest_albums_frag" />-->
-<!--    </fragment>-->
+        <action
+            android:id="@+id/to_AlbumListFragment"
+            app:destination="@id/nav_dest_albums_frag" />
+    </fragment>
 </navigation>
