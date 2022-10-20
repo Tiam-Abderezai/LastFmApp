@@ -2,7 +2,7 @@ package com.example.lastfmapp.repositories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.lastfmapp.albums.model.AlbumEntity
+import com.example.lastfmapp.main.albums.model.AlbumEntity
 import com.example.lastfmapp.data.local.RoomRepository
 
 class FakeRoomRepositoryAndroidTest : RoomRepository {

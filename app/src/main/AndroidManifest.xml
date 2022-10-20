@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="com.example.lastfmapp.App"
@@ -16,7 +17,7 @@
         android:theme="@style/Theme.LastFmApp"
         tools:targetApi="31">
         <activity
-            android:name=".main.MainActivity"
+            android:name=".main.main.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.LastFmApp.NoActionBar">

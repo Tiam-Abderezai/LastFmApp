@@ -18,5 +18,9 @@ class Constants {
         const val TABLE_IMAGE = "table_image"
         const val TABLE_TAG = "table_tag"
         const val TABLE_ARTIST = "table_artist"
+
+        // Paging
+        const val ARTIST_STARTING_PAGE_INDEX = 1
+        const val ALBUMS_STARTING_PAGE_INDEX = 1
     }
 }

@@ -2,6 +2,7 @@ package com.example.lastfmapp.data.repositories
 
 import com.example.lastfmapp.data.RetrofitRepositoryImpl
 import com.example.lastfmapp.data.model.album
+import com.example.lastfmapp.data.model.artist
 import com.example.lastfmapp.data.remote.RetrofitService
 import com.example.lastfmapp.util.Constants
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -56,6 +57,21 @@ class RetrofitRepositoryImplTest {
         runBlocking {
             val expected = album
             val actual = sut.getTopAlbums().body()?.topAlbums?.albums?.get(0)
+
+            assertEquals(
+                expected,
+                actual
+            )
+        }
+    }
+
+    @Test
+    fun `should search artist correctly given 200 response`() {
+        mockWebServer.enqueueResponse("search_artists_feed.json", 200)
+
+        runBlocking {
+            val expected = artist
+            val actual = sut.searchArtists("Cher").body()?.results?.artists?.artists?.get(0)
 
             assertEquals(
                 expected,

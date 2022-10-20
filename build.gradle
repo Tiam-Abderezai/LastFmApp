@@ -5,9 +5,13 @@ buildscript {
         version_dagger_hilt = "2.42"
         version_room = "2.2.5"
         version_coroutines = "1.6.4"
+        version_paging3 = "3.1.1"
+        version_navigation = "2.5.2"
+        version_glide = "4.11.0"
     }
     dependencies {
         classpath "com.google.dagger:hilt-android-gradle-plugin:$version_dagger_hilt"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
     }
 }
 

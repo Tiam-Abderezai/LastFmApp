@@ -5,6 +5,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -74,6 +75,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'androidx.paging:paging-common-ktx:3.1.1'
 
     // Local & Instrumented Unit Tests
     testImplementation 'junit:junit:4.13.2'
@@ -94,6 +96,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime:2.5.1"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+
     // Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.2'
@@ -129,5 +132,11 @@ dependencies {
     kapt "androidx.room:room-compiler:$version_room"
     implementation "androidx.room:room-ktx:$version_room"
     androidTestImplementation "androidx.room:room-testing:$version_room"
+
+    // Paging 3
+    implementation "androidx.paging:paging-runtime:$version_paging3"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$version_glide"
 
 }

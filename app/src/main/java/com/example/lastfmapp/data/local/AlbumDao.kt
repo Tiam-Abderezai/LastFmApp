@@ -6,7 +6,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
-import com.example.lastfmapp.albums.model.AlbumEntity
+import com.example.lastfmapp.main.albums.model.AlbumEntity
 import com.example.lastfmapp.util.Constants
 
 @Dao
