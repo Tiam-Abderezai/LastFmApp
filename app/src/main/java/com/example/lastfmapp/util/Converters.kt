@@ -1,8 +1,7 @@
 package com.example.lastfmapp.util
 
 import androidx.room.TypeConverter
-import com.example.lastfmapp.albums.model.ImageEntity
-import com.example.lastfmapp.artists.model.ArtistEntity
+import com.example.lastfmapp.main.artists.model.ArtistEntity
 import com.google.gson.Gson
 
 class Converters {

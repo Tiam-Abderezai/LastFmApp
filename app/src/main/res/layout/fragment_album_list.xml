@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_700"
-    tools:context="com.example.lastfmapp.albums.AlbumListFragment">
+    tools:context="com.example.lastfmapp.main.albums.ui.AlbumListFragment">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/album_list_nested_scrollview"

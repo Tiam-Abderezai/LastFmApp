@@ -1,8 +1,8 @@
 package com.example.lastfmapp.data.model
 
-import com.example.lastfmapp.albums.model.AlbumEntity
-import com.example.lastfmapp.albums.model.ImageEntity
-import com.example.lastfmapp.artists.model.ArtistEntity
+import com.example.lastfmapp.main.albums.model.AlbumEntity
+import com.example.lastfmapp.main.artists.model.ArtistEntity
+import com.example.lastfmapp.util.ImageEntity
 
 private val artistEntity = ArtistEntity(
     id = 1,

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item_top_albums"
+        android:enabled="true"
+        android:icon="@drawable/icon_top_albums"/>
+    <item
+        android:id="@+id/menu_item_search_artist"
+        android:enabled="true"
+        android:icon="@drawable/icon_search_artist"/>
+</menu>

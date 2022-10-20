@@ -1,7 +1,7 @@
 package com.example.lastfmapp.data.local
 
 import androidx.lifecycle.LiveData
-import com.example.lastfmapp.albums.model.AlbumEntity
+import com.example.lastfmapp.main.albums.model.AlbumEntity
 import javax.inject.Inject
 
 class RoomRepositoryImpl

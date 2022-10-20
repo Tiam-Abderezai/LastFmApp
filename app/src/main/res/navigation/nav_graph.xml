@@ -3,25 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_dest_albums_frag">
-
+    app:startDestination="@id/fragmentMain">
     <fragment
-        android:id="@+id/nav_dest_albums_frag"
-        android:name="com.example.lastfmapp.albums.AlbumListFragment"
-        tools:layout="@layout/fragment_album_list">
-
-<!--        <action-->
-<!--            android:id="@+id/action_FirstFragment_to_SecondFragment"-->
-<!--            app:destination="@id/SecondFragment" />-->
+        android:id="@+id/fragmentMain"
+        android:name="com.example.lastfmapp.main.main.MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/toTopAlbums"
+            app:destination="@+id/fragmentTopAlbums"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/toTracks"
+            app:destination="@+id/fragmentTracks"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <argument
+            android:name="artist_request"
+            app:argType="com.example.lastfmapp.main.artists.model.ArtistRequest" />
+        <argument
+            android:name="album_request"
+            app:argType="com.example.lastfmapp.main.albums.model.AlbumRequest" />
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/SecondFragment"-->
-<!--        android:name="com.example.lastfmapp.artists.ArtistsFragment"-->
-<!--        android:label="@string/second_fragment_label"-->
-<!--        tools:layout="@layout/fragment_second">-->
-
-<!--        <action-->
-<!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-<!--            app:destination="@id/nav_dest_albums_frag" />-->
-<!--    </fragment>-->
+    <fragment
+        android:id="@+id/fragmentArtists"
+        android:name="com.example.lastfmapp.main.artists.ui.ArtistListFragment"
+        android:label="@string/search_artist"
+        tools:layout="@layout/fragment_artist_list">
+        <action
+            android:id="@+id/toMain"
+            app:destination="@+id/fragmentMain"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTopAlbums"
+        android:name="com.example.lastfmapp.main.top_albums.ui.TopAlbumListFragment"
+        android:label="@string/top_albums"
+        tools:layout="@layout/fragment_top_album_list">
+        <argument
+            android:name="artist_request"
+            app:argType="com.example.lastfmapp.main.artists.model.ArtistRequest" />
+        <action
+            android:id="@+id/toMain"
+            app:destination="@+id/fragmentMain"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/toTracks"
+            app:destination="@+id/fragmentTracks"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTracks"
+        android:name="com.example.lastfmapp.main.tracks.ui.TrackListFragment"
+        android:label="@string/tracks"
+        tools:layout="@layout/fragment_track_list">
+        <argument
+            android:name="album_request"
+            app:argType="com.example.lastfmapp.main.albums.model.AlbumRequest" />
+    </fragment>
 </navigation>
