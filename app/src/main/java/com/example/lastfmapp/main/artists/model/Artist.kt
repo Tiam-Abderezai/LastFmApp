@@ -17,13 +17,16 @@ data class ArtistRequest(
     val url: String,
     @SerializedName("image")
     val images: List<ImageRequest>?
-) : Parcelable
+) : Parcelable {
+    override fun toString() = name
+}
 
 @Entity(tableName = TABLE_ARTIST)
+@Parcelize
 data class ArtistEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int?,
+    val id: Int = 0,
     val mBid: String,
     val name: String,
     val url: String
-)
+) : Parcelable

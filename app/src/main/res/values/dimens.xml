@@ -1,5 +1,11 @@
 <resources>
     <dimen name="bottom_nav_menu_size">48dp</dimen>
-    <dimen name="icon_size">24dp</dimen>
+
+    <dimen name="icon_size_24">24dp</dimen>
+    <dimen name="icon_size_48">48dp</dimen>
+    <dimen name="icon_size_128">128dp</dimen>
+
+    <dimen name="border_size_8">8dp</dimen>
+    <dimen name="border_size_1">1dp</dimen>
 
 </resources>

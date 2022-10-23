@@ -10,7 +10,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.lastfmapp.R
 import com.example.lastfmapp.databinding.FragmentTopAlbumListBinding
+import com.example.lastfmapp.main.albums.model.AlbumEntity
 import com.example.lastfmapp.main.albums.model.AlbumRequest
 import com.example.lastfmapp.main.main.MainFragmentDirections
 import com.example.lastfmapp.util.Log
@@ -23,7 +27,8 @@ class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener
     private val bind get() = _bind
     private val topAlbumsViewModel by lazy { ViewModelProvider(this)[TopAlbumListViewModel::class.java] }
     private val args by navArgs<TopAlbumListFragmentArgs>()
-
+    private lateinit var artistName: String
+    private lateinit var artistImage: String
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,11 +40,7 @@ class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(context, "${args.artistRequest.name}", Toast.LENGTH_SHORT).show()
-
         _bind = FragmentTopAlbumListBinding.bind(view)
-        Log.d(Log.TAG, "TopAlbumList Artist: ${args.artistRequest.name}")
-        bind.textViewCreator.text = args.artistRequest.name
         setupRecyclerView()
         setupLifeCycleObservers()
     }
@@ -47,14 +48,14 @@ class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener
     private fun setupRecyclerView() {
         Log.d(Log.TAG, "")
         with(topAlbumsViewModel) {
-            queryTopAlbums(args.artistRequest.name)
+            artistName = args.artistRequest.name
+            queryTopAlbums(artistName)
             topAlbumQueryLiveData.observe(viewLifecycleOwner) { albumRequest ->
                 Log.d(Log.TAG, "Album Request: $albumRequest")
                 val adapter = TopAlbumListAdapter(
                     topAlbums = albumRequest,
                     listener = this@TopAlbumListFragment
                 )
-                bind.recyclerView.setHasFixedSize(true)
                 bind.recyclerView.apply {
                     layoutManager = LinearLayoutManager(context)
                     this.adapter = adapter
@@ -62,6 +63,14 @@ class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener
                     adapter.notifyDataSetChanged()
                     Log.d(Log.TAG, "TopAlbumList Size: ${albumRequest?.size}")
                 }
+                artistImage = albumRequest?.get(0)?.images?.get(3)?.text.toString()
+                Glide.with(bind.imageView)
+                    .load(artistImage)
+                    .centerCrop()
+                    .fitCenter()
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .error(R.drawable.icon_error)
+                    .into(bind.imageView)
             }
         }
     }
@@ -75,5 +84,9 @@ class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener
         Log.d(Log.TAG, "Navi Action: $action")
         findNavController().navigate(action)
         Toast.makeText(context, "${album.name}", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onHeartClick(album: AlbumEntity) {
+        topAlbumsViewModel.saveTopAlbum(album)
     }
 }

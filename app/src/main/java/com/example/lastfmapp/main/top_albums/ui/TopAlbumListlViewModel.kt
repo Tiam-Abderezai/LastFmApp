@@ -5,6 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lastfmapp.data.RetrofitRepositoryImpl
+import com.example.lastfmapp.data.local.RoomRepositoryImpl
+import com.example.lastfmapp.main.albums.model.AlbumEntity
 import com.example.lastfmapp.main.albums.model.AlbumRequest
 import com.example.lastfmapp.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,8 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TopAlbumListViewModel @Inject constructor(
-//    val app: Application
-    private val retrofitRepoImpl: RetrofitRepositoryImpl
+    private val retrofitRepoImpl: RetrofitRepositoryImpl,
+    private val roomRepoImpl: RoomRepositoryImpl
 ) : ViewModel() {
     private val _topAlbumsLiveData = MutableLiveData<List<AlbumRequest>?>()
     val topAlbumsLiveData: LiveData<List<AlbumRequest>?> = _topAlbumsLiveData
@@ -42,6 +44,15 @@ class TopAlbumListViewModel @Inject constructor(
             Log.d(Log.TAG, "Artist Query: $query")
             Log.d(Log.TAG, "Albums Response: $response")
             _topAlbumQueryLiveData.postValue(response)
+            val db = roomRepoImpl.getAlbums()
+            Log.d(Log.TAG, "Data Saved: $db")
+        }
+    }
+
+    fun saveTopAlbum(albumEntity: AlbumEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            roomRepoImpl.saveAlbum(albumEntity)
+            Log.d(Log.TAG, "Album Entity: $albumEntity")
         }
     }
 }

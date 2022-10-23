@@ -14,10 +14,11 @@ data class ImageRequest(
 ) : Parcelable
 
 @Entity(tableName = Constants.TABLE_IMAGE)
+@Parcelize
 data class ImageEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int?,
+    val id: Int = 0,
     @SerializedName("#text")
     val text: String?,
     val size: String
-)
+) : Parcelable

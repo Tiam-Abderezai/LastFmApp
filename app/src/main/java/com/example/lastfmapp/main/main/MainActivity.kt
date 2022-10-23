@@ -9,7 +9,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.lastfmapp.R
 import com.example.lastfmapp.databinding.ActivityMainBinding
-import com.example.lastfmapp.main.albums.ui.AlbumListFragment
+import com.example.lastfmapp.main.albums.ui.list.AlbumListFragment
 import com.example.lastfmapp.main.artists.ui.ArtistListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint

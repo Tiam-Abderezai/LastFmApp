@@ -6,5 +6,7 @@
     <string name="top_albums">Top Albums</string>
     <string name="search_artist">Search Artist</string>
     <string name="tracks">Tracks</string>
+    <string name="albums">Albums</string>
+    <string name="album_detail">Album Detail</string>
 
 </resources>
