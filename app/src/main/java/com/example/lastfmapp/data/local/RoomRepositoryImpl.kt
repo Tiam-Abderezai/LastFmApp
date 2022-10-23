@@ -1,12 +1,12 @@
 package com.example.lastfmapp.data.local
 
-import androidx.lifecycle.LiveData
 import com.example.lastfmapp.main.albums.model.AlbumEntity
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class RoomRepositoryImpl
 @Inject constructor(private val albumDao: AlbumDao) : RoomRepository {
-    override fun getAlbums(): LiveData<List<AlbumEntity>> {
+    override fun getAlbums(): Flow<List<AlbumEntity>> {
         return albumDao.observeAllAlbums()
     }
 

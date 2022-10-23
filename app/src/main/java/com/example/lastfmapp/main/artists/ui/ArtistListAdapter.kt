@@ -40,9 +40,7 @@ class ArtistListAdapter(
         }
 
         fun bind(artist: ArtistRequest?) {
-//            itemBind.tvTitle.text = artist.name
-            itemBind.tvTitle.text =
-                artist?.name ?: ""
+            itemBind.tvTitle.text = artist?.name ?: ""
         }
     }
 

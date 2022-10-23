@@ -21,12 +21,13 @@ data class AlbumRequest(
 ) : Parcelable
 
 @Entity(tableName = TABLE_ALBUM)
+@Parcelize
 data class AlbumEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int?,
+    val id: Int = 0,
     val artist: ArtistEntity,
-    val image: List<ImageEntity>,
+    val image: ImageEntity,
     val mBid: String,
     val name: String,
     val url: String
-)
+) : Parcelable

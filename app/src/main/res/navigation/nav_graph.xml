@@ -16,12 +16,38 @@
             android:id="@+id/toTracks"
             app:destination="@+id/fragmentTracks"
             app:enterAnim="@anim/nav_default_enter_anim" />
+        <action
+            android:id="@+id/toAlbumDetail"
+            app:destination="@+id/fragmentAlbumDetail"
+            app:enterAnim="@anim/nav_default_enter_anim" />
         <argument
             android:name="artist_request"
             app:argType="com.example.lastfmapp.main.artists.model.ArtistRequest" />
         <argument
             android:name="album_request"
             app:argType="com.example.lastfmapp.main.albums.model.AlbumRequest" />
+        <argument
+            android:name="album_entity"
+            app:argType="com.example.lastfmapp.main.albums.model.AlbumEntity" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAlbums"
+        android:name="com.example.lastfmapp.main.albums.ui.list.AlbumListFragment"
+        android:label="@string/albums"
+        tools:layout="@layout/fragment_album_list">
+        <action
+            android:id="@+id/toMain"
+            app:destination="@+id/fragmentMain"
+            app:enterAnim="@anim/nav_default_enter_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAlbumDetail"
+        android:name="com.example.lastfmapp.main.albums.ui.detail.AlbumDetailFragment"
+        android:label=" "
+        tools:layout="@layout/fragment_album_detail">
+        <argument
+            android:name="album_entity"
+            app:argType="com.example.lastfmapp.main.albums.model.AlbumEntity" />
     </fragment>
     <fragment
         android:id="@+id/fragmentArtists"
@@ -36,7 +62,7 @@
     <fragment
         android:id="@+id/fragmentTopAlbums"
         android:name="com.example.lastfmapp.main.top_albums.ui.TopAlbumListFragment"
-        android:label="@string/top_albums"
+        android:label="{artist_request}"
         tools:layout="@layout/fragment_top_album_list">
         <argument
             android:name="artist_request"

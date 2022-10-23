@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.lastfmapp.databinding.FragmentMainBinding
-import com.example.lastfmapp.main.albums.ui.AlbumListFragment
+import com.example.lastfmapp.main.albums.ui.list.AlbumListFragment
 import com.example.lastfmapp.main.artists.ui.ArtistListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,7 +16,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainFragment : Fragment() {
     private lateinit var _bind: FragmentMainBinding
     private val bind get() = _bind
-//    val mainFragmentViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,12 +44,16 @@ class MainFragment : Fragment() {
 
         val mainFragmentViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         with(mainFragmentViewModel) {
-            artistsFragmentLiveData.observe(viewLifecycleOwner) {
+            toTopAlbumFragLiveData.observe(viewLifecycleOwner) {
                 val action = MainFragmentDirections.toTopAlbums(it)
                 findNavController().navigate(action)
             }
-            albumsFragmentLiveData.observe(viewLifecycleOwner) {
+            toTracksFragLiveData.observe(viewLifecycleOwner) {
                 val action = MainFragmentDirections.toTracks(it)
+                findNavController().navigate(action)
+            }
+            toAlbumDetailFragLiveData.observe(viewLifecycleOwner) {
+                val action = MainFragmentDirections.toAlbumDetail(it)
                 findNavController().navigate(action)
             }
         }

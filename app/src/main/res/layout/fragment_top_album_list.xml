@@ -32,34 +32,6 @@
                 tools:scaleType="centerCrop"
                 tools:src="@mipmap/ic_launcher_round" />
 
-            <TextView
-                android:id="@+id/text_view_description"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:background="@color/teal_200"
-                android:layout_marginEnd="8dp"
-                android:visibility="gone"
-                tools:text="This is the description"
-                tools:visibility="visible" />
-
-            <TextView
-                android:id="@+id/text_view_creator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:textSize="@dimen/icon_size"
-                android:background="@color/teal_200"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:textColor="@android:color/black"
-                android:visibility="visible"
-                android:text="Photo by XYZ on Unsplash"
-                tools:visibility="visible" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"

@@ -12,8 +12,8 @@ class Converters {
     fun toArtist(s: String) = Gson().fromJson(s, ArtistEntity::class.java)
 
     @TypeConverter
-    fun fromImageList(images: List<ImageEntity>) = Gson().toJson(images)
+    fun fromImageList(image: ImageEntity) = Gson().toJson(image)
 
     @TypeConverter
-    fun toImageList(s: String) = Gson().fromJson(s, Array<ImageEntity>::class.java).toList()
+    fun toImageList(s: String) = Gson().fromJson(s, ImageEntity::class.java)
 }

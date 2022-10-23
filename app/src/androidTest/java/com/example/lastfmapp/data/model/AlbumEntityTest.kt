@@ -35,7 +35,7 @@ private val imageEntityExtraLarge = ImageEntity(
 internal val albumEntity1 = AlbumEntity(
     id = 1,
     artist = artistEntity,
-    listOf(imageEntitySmall, imageEntityMedium, imageEntityLarge, imageEntityExtraLarge),
+    imageEntitySmall,
     mBid = "63b3a8ca-26f2-4e2b-b867-647a6ec2bebd",
     name = "Believe",
     url = "https://www.last.fm/music/Cher/Believe"
@@ -44,7 +44,7 @@ internal val albumEntity1 = AlbumEntity(
 internal val albumEntity2 = AlbumEntity(
     id = 2,
     artist = artistEntity,
-    listOf(imageEntitySmall, imageEntityMedium, imageEntityLarge, imageEntityExtraLarge),
+    imageEntitySmall,
     mBid = "63b3a8ca-26f2-4e2b-b867-647a6ec2bebd",
     name = "Believe",
     url = "https://www.last.fm/music/Cher/Believe"
@@ -53,7 +53,7 @@ internal val albumEntity2 = AlbumEntity(
 internal val albumEntity3 = AlbumEntity(
     id = 3,
     artist = artistEntity,
-    listOf(imageEntitySmall, imageEntityMedium, imageEntityLarge, imageEntityExtraLarge),
+    imageEntitySmall,
     mBid = "63b3a8ca-26f2-4e2b-b867-647a6ec2bebd",
     name = "Believe",
     url = "https://www.last.fm/music/Cher/Believe"

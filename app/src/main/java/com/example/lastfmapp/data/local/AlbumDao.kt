@@ -1,6 +1,5 @@
 package com.example.lastfmapp.data.local
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -8,6 +7,7 @@ import androidx.room.OnConflictStrategy.REPLACE
 import androidx.room.Query
 import com.example.lastfmapp.main.albums.model.AlbumEntity
 import com.example.lastfmapp.util.Constants
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AlbumDao {
@@ -18,6 +18,6 @@ interface AlbumDao {
     @Delete
     suspend fun deleteAlbum(album: AlbumEntity)
 
-    @Query("SELECT * FROM ${Constants.TABLE_ALBUM}")
-    fun observeAllAlbums(): LiveData<List<AlbumEntity>>
+    @Query("SELECT * FROM ${Constants.TABLE_ALBUM}  ORDER BY id ASC")
+    fun observeAllAlbums(): Flow<List<AlbumEntity>>
 }
