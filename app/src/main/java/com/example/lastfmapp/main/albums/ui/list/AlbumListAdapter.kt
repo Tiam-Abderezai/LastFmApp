@@ -18,7 +18,7 @@ class AlbumListAdapter(
         RecyclerView.ViewHolder(itemBind.root) {
         fun bind(album: AlbumEntity) {
             val albumName = album.name
-            val albumArtist = album.artist.name
+            val albumArtist = album.artist?.name
             val albumImage = album.image
             val albumImageUrl = album.image.text
             itemBind.apply {

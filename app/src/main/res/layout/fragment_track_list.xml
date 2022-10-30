@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/green"
     tools:context="com.example.lastfmapp.main.tracks.ui.TrackListFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:clipToPadding="true"
         android:scrollbars="none"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/heart_icon_image"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,24 +25,38 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:background="@color/purple"
                 android:layout_height="match_parent"
+                android:background="@color/purple"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <ProgressBar
-        android:id="@+id/track_list_progress_bar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/heart_icon_image"
+        android:layout_width="@dimen/icon_size_128"
+        android:layout_height="@dimen/icon_size_128"
+        android:layout_marginBottom="@dimen/icon_size_48"
+        android:backgroundTint="@android:color/transparent"
+        android:clickable="false"
+        android:src="@drawable/selector_heart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invisible" />
+        app:layout_constraintTop_toBottomOf="@id/track_list_nested_scrollview" />
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/track_list_progress_bar"-->
+<!--        style="?android:attr/progressBarStyle"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:visibility="gone" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

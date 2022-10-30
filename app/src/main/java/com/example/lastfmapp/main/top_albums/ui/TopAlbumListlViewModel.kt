@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.lastfmapp.data.RetrofitRepositoryImpl
 import com.example.lastfmapp.data.local.RoomRepositoryImpl
-import com.example.lastfmapp.main.albums.model.AlbumEntity
 import com.example.lastfmapp.main.albums.model.AlbumRequest
 import com.example.lastfmapp.util.Log
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -38,21 +37,15 @@ class TopAlbumListViewModel @Inject constructor(
         }
     }
 
+    // REMOTE DATA / RETROFIT
     fun queryTopAlbums(query: String) {
         viewModelScope.launch(Dispatchers.IO) {
             val response = retrofitRepoImpl.getTopAlbums(query).body()?.topAlbums?.albums
             Log.d(Log.TAG, "Artist Query: $query")
             Log.d(Log.TAG, "Albums Response: $response")
             _topAlbumQueryLiveData.postValue(response)
-            val db = roomRepoImpl.getAlbums()
+            val db = roomRepoImpl.queryAlbumEntities()
             Log.d(Log.TAG, "Data Saved: $db")
-        }
-    }
-
-    fun saveTopAlbum(albumEntity: AlbumEntity) {
-        viewModelScope.launch(Dispatchers.IO) {
-            roomRepoImpl.saveAlbum(albumEntity)
-            Log.d(Log.TAG, "Album Entity: $albumEntity")
         }
     }
 }

@@ -5,9 +5,11 @@ import androidx.room.Room
 import com.example.lastfmapp.data.RetrofitRepository
 import com.example.lastfmapp.data.RetrofitRepositoryImpl
 import com.example.lastfmapp.data.local.AlbumDao
+import com.example.lastfmapp.data.local.ArtistDao
 import com.example.lastfmapp.data.local.RoomDB
 import com.example.lastfmapp.data.local.RoomRepository
 import com.example.lastfmapp.data.local.RoomRepositoryImpl
+import com.example.lastfmapp.data.local.TracksDao
 import com.example.lastfmapp.data.remote.RetrofitService
 import com.example.lastfmapp.util.Constants
 import com.example.lastfmapp.util.Constants.Companion.BASE_URL
@@ -43,9 +45,23 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideArtistDao(
+        database: RoomDB
+    ) = database.artistDao()
+
+    @Singleton
+    @Provides
+    fun provideTracksDao(
+        database: RoomDB
+    ) = database.tracksDao()
+
+    @Singleton
+    @Provides
     fun provideRoomRepository(
-        albumDao: AlbumDao
-    ) = RoomRepositoryImpl(albumDao) as RoomRepository
+        albumDao: AlbumDao,
+        artistDao: ArtistDao,
+        tracksDao: TracksDao
+    ) = RoomRepositoryImpl(albumDao, artistDao, tracksDao) as RoomRepository
 
     @Singleton
     @Provides
