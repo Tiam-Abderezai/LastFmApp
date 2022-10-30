@@ -95,6 +95,7 @@ class ArtistListFragment : Fragment(), ArtistListAdapter.OnItemClickListener {
         )
     }
 
+
     private fun setupRecyclerView() {
         val adapter = ArtistListAdapter(this)
         bind.recyclerView.setHasFixedSize(true)

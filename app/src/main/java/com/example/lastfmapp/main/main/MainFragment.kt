@@ -25,7 +25,7 @@ class MainFragment : Fragment() {
         // Inflate the layout for this fragment
         _bind = FragmentMainBinding.inflate(inflater, container, false)
 
-        val fragmentList = arrayListOf<Fragment>(
+        val fragmentList = arrayListOf(
             AlbumListFragment(),
             ArtistListFragment()
         )

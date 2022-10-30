@@ -18,6 +18,12 @@ interface AlbumDao {
     @Delete
     suspend fun deleteAlbum(album: AlbumEntity)
 
-    @Query("SELECT * FROM ${Constants.TABLE_ALBUM}  ORDER BY id ASC")
+    @Query("SELECT * FROM ${Constants.TABLE_ALBUM} ORDER BY mBid DESC")
     fun observeAllAlbums(): Flow<List<AlbumEntity>>
+
+    @Query("SELECT EXISTS(SELECT 1 FROM ${Constants.TABLE_ALBUM} WHERE mBid = :mBid)")
+    fun doesAlbumExist(mBid: String): Boolean
+
+    @Query("SELECT * FROM ${Constants.TABLE_ALBUM} WHERE mBid = :mBid")
+    fun queryAlbum(mBid: String): AlbumEntity
 }

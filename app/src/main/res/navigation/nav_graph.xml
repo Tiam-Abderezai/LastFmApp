@@ -63,6 +63,7 @@
         android:id="@+id/fragmentTopAlbums"
         android:name="com.example.lastfmapp.main.top_albums.ui.TopAlbumListFragment"
         android:label="{artist_request}"
+
         tools:layout="@layout/fragment_top_album_list">
         <argument
             android:name="artist_request"

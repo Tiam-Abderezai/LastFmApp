@@ -12,6 +12,7 @@ import com.example.lastfmapp.databinding.ActivityMainBinding
 import com.example.lastfmapp.main.albums.ui.list.AlbumListFragment
 import com.example.lastfmapp.main.artists.ui.ArtistListFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,24 +26,25 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewPager: ViewPager2
     private lateinit var mainPageAdapter: MainPagerAdapter
 
-//    private val mOnNavigationItemSelectedListener = NavigationBarView.OnItemSelectedListener { item ->
-//        when (item.itemId) {
-//            R.id.menu_item_top_albums -> {
-//                viewPager.currentItem = 0
-//                return@OnItemSelectedListener true
-//            }
-//            R.id.menu_item_search_artist -> {
-//                viewPager.currentItem = 1
-//                return@OnItemSelectedListener true
-//            }
-//        }
-//        false
-//    }
+    private val mOnNavigationItemSelectedListener = NavigationBarView.OnItemSelectedListener { item ->
+        when (item.itemId) {
+            R.id.menu_item_top_albums -> {
+                viewPager.currentItem = 0
+                return@OnItemSelectedListener true
+            }
+            R.id.menu_item_search_artist -> {
+                viewPager.currentItem = 1
+                return@OnItemSelectedListener true
+            }
+        }
+        false
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
         setSupportActionBar(bind.toolbarMain)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         setupNavigation()
         setupLifeCycleObservers()
     }
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 //        viewPager.apply {
 //            offscreenPageLimit = 3
 //            adapter = mainPageAdapter
-//            registerOnPageChangeCallback(object : OnPageChangeCallback() {
+//            registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
 //                override fun onPageSelected(position: Int) {
 //                    super.onPageSelected(position)
 //                    when (position) {
@@ -80,5 +82,11 @@ class MainActivity : AppCompatActivity() {
 //                }
 //            })
 //        }
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_main) as NavHostFragment
+        val navController = navHostFragment.navController
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

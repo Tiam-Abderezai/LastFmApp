@@ -18,7 +18,7 @@ class AlbumListViewModel @Inject constructor(
     roomRepo: RoomRepository
 ) : ViewModel() {
 
-    private val _albumListLiveData = roomRepo.getAlbums().asLiveData()
+    private val _albumListLiveData = roomRepo.queryAlbumEntities().asLiveData()
     val albumListLiveData: LiveData<List<AlbumEntity>> = _albumListLiveData
 
     private val _albumStatusLiveData = MutableLiveData<Event<Resource<AlbumEntity>>>()

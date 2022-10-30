@@ -36,34 +36,11 @@
         android:adjustViewBounds="true"
         app:layout_constraintBottom_toTopOf="@id/view_bottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_top"
         tools:layout_height="wrap_content"
         tools:scaleType="centerCrop"
         tools:src="@mipmap/ic_launcher_round" />
 
-    <View
-        android:id="@+id/heart_icon_button"
-        android:layout_width="@dimen/icon_size_128"
-        android:layout_height="@dimen/icon_size_128"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@id/view_top"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image_view"
-        app:layout_constraintTop_toBottomOf="@id/view_bottom"
-        tools:scaleType="centerCrop" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/heart_icon_image"
-        android:layout_width="@dimen/icon_size_128"
-        android:layout_height="@dimen/icon_size_128"
-        android:backgroundTint="@android:color/transparent"
-        android:clickable="false"
-        android:src="@drawable/icon_heart_disabled"
-        app:layout_constraintBottom_toTopOf="@id/view_bottom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/image_view"
-        app:layout_constraintTop_toBottomOf="@id/view_top" />
 
     <View
         android:id="@+id/view_bottom"

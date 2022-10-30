@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
     android:orientation="vertical"
     tools:context=".main.main.MainActivity">
 
@@ -40,6 +41,7 @@
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/green"
         android:layout_gravity="bottom"
         android:splitMotionEvents="true"
         app:itemIconSize="@dimen/bottom_nav_menu_size"
