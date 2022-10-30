@@ -19,7 +19,7 @@ class ArtistListViewModel @Inject constructor(
 
     private val _artistListLiveData = MutableLiveData<List<ArtistRequest>>()
     val artistListLiveData: LiveData<List<ArtistRequest>> = _artistListLiveData
-    private val _queryLiveData = MutableLiveData("Mozart")
+    private val _queryLiveData = MutableLiveData<String>()
     val queryLiveData = _queryLiveData.switchMap { queryString ->
         retrofitRepoImpl.searchArtists(queryString).cachedIn(viewModelScope)
     }

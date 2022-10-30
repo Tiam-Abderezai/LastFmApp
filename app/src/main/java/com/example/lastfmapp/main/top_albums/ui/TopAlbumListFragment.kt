@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -14,11 +14,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.lastfmapp.R
 import com.example.lastfmapp.databinding.FragmentTopAlbumListBinding
-import com.example.lastfmapp.main.albums.model.AlbumEntity
 import com.example.lastfmapp.main.albums.model.AlbumRequest
 import com.example.lastfmapp.main.main.MainFragmentDirections
 import com.example.lastfmapp.util.Log
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener {
@@ -35,6 +35,7 @@ class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener
         savedInstanceState: Bundle?
     ): View {
         _bind = FragmentTopAlbumListBinding.inflate(inflater, container, false)
+
         return bind.root
     }
 
@@ -50,10 +51,10 @@ class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener
         with(topAlbumsViewModel) {
             artistName = args.artistRequest.name
             queryTopAlbums(artistName)
-            topAlbumQueryLiveData.observe(viewLifecycleOwner) { albumRequest ->
-                Log.d(Log.TAG, "Album Request: $albumRequest")
+            topAlbumQueryLiveData.observe(viewLifecycleOwner) { albumRequests ->
+                Log.d(Log.TAG, "Album Request: $albumRequests")
                 val adapter = TopAlbumListAdapter(
-                    topAlbums = albumRequest,
+                    albumRequests = albumRequests,
                     listener = this@TopAlbumListFragment
                 )
                 bind.recyclerView.apply {
@@ -61,9 +62,9 @@ class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener
                     this.adapter = adapter
                     setHasFixedSize(true)
                     adapter.notifyDataSetChanged()
-                    Log.d(Log.TAG, "TopAlbumList Size: ${albumRequest?.size}")
+                    Log.d(Log.TAG, "TopAlbumList Size: ${albumRequests?.size}")
                 }
-                artistImage = albumRequest?.get(0)?.images?.get(3)?.text.toString()
+                artistImage = albumRequests?.get(0)?.images?.get(3)?.text.toString()
                 Glide.with(bind.imageView)
                     .load(artistImage)
                     .centerCrop()
@@ -79,14 +80,9 @@ class TopAlbumListFragment : Fragment(), TopAlbumListAdapter.OnItemClickListener
     }
 
     override fun onItemClick(album: AlbumRequest) {
-        Log.d(Log.TAG, "Album: ${album.name}")
+        Log.d(Log.TAG, "Album: ${album}")
         val action = MainFragmentDirections.toTracks(album)
         Log.d(Log.TAG, "Navi Action: $action")
         findNavController().navigate(action)
-        Toast.makeText(context, "${album.name}", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onHeartClick(album: AlbumEntity) {
-        topAlbumsViewModel.saveTopAlbum(album)
     }
 }

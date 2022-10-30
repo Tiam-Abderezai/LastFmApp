@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import com.example.lastfmapp.util.Constants.Companion.TABLE_ARTIST
 import com.example.lastfmapp.util.ImageRequest
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ArtistRequest(
@@ -24,9 +24,8 @@ data class ArtistRequest(
 @Entity(tableName = TABLE_ARTIST)
 @Parcelize
 data class ArtistEntity(
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    val mBid: String,
+    @PrimaryKey
     val name: String,
-    val url: String
+    val mBid: String?,
+    val url: String?
 ) : Parcelable
